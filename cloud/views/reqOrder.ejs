@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+ 
+ 	<%- include head %>
+
+    <div class="container">
+
+      <form class="form-signin" role="form">
+        <h4 class="form-signin-heading">您的手机号是？</h4>
+        <h5>填写手机号码，方便风行者与您联系<h5>
+        <div class="form-inline">
+        <input type="phone"  class="form-control" id="phone" placeholder="手机号" required="" autofocus="" maxlength="11" onblur="if(/\d{11}/gi.test(this.value)?true:false){}else{alert('请输入正确格式的手机号');}">
+        <input class="btn btn-lgg" onclick="verifySms()" value="验证" type="button">
+        </div>
+        <input type="password" class="form-control" placeholder="验证码" required="">
+        
+        <button class="btn btn-lg btn-primary btn-block" type="submit">提交</button>
+         <h5>您还可以电话叫代泊</h5>
+      <a href="tel:4006-491-811" class="tel_btn"><i class="tel"></i>4006-491-811</a>
+
+      </form>
+
+     
+
+      <div id="p_tip">
+		<ul>
+			<li><span class="icon_bao_grey"></span>
+				<h6>尊享代泊险</h6>
+			</li>
+			<li><span class="icon_shanda_grey"></span>
+				<h6>5分钟闪电到达</h6>
+			</li>
+			<li><span class="icon_wait_grey"></span>
+				<h6>节约您宝贵的时间</h6>
+			</li>
+		</ul>
+	</div>
+
+  <script type="text/javascript">
+  function verifySms(){
+  
+    var phone = $("#phone").val();
+      alert(phone);
+    AV.User.requestMobilePhoneVerify(phone).then(function(){
+      alert("成功");
+}, function(err){
+      alert("失败");//发送失败
+});
+  }
+
+  </script>
+
+    </div> <!-- /container -->
+
+  
